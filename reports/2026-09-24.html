@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FX手法 検証候補 2026-09-24</title>
+<style>
+:root{
+  --bg:#f6f5f1; --card:#ffffff; --text:#1f2328; --muted:#5f6670; --line:#e3e1da;
+  --accent:#1d5fa8; --a:#1f7a4d; --a-bg:#e3f3ea; --b:#8a5a00; --b-bg:#fbf0d9; --c:#9b2c2c; --c-bg:#f9e3e3;
+  --new:#1d5fa8; --new-bg:#e4eefa; --guess:#6b4fa0; --guess-bg:#efeaf8;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#16181c; --card:#1f2228; --text:#e7e9ec; --muted:#a3a9b2; --line:#30343c;
+    --accent:#79aef0; --a:#7fd6a6; --a-bg:#183326; --b:#f0c46b; --b-bg:#3a2e14; --c:#f19b9b; --c-bg:#3b1d1d;
+    --new:#8fbcf5; --new-bg:#1b2b40; --guess:#c3aef0; --guess-bg:#2b2440;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+  line-height:1.8;font-size:16px}
+.wrap{max-width:860px;margin:0 auto;padding:32px 16px 64px}
+header h1{font-size:1.6rem;margin:0 0 4px;line-height:1.4}
+header .date{color:var(--muted);margin:0 0 24px}
+h2{font-size:1.25rem;margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px}
+.note ul{margin:0;padding-left:1.2em}
+.top3{display:grid;gap:12px}
+.top3 .item{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:10px;padding:14px 18px}
+.top3 .item h3{margin:0 0 4px;font-size:1.05rem}
+.top3 .item p{margin:0}
+.cand{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:0 0 16px}
+.cand h3{margin:0 0 10px;font-size:1.1rem;line-height:1.5}
+.cand h3 .num{color:var(--muted);font-weight:normal;margin-right:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.tag{display:inline-block;font-size:.8rem;font-weight:bold;padding:2px 10px;border-radius:999px}
+.tag.A{color:var(--a);background:var(--a-bg)}
+.tag.B{color:var(--b);background:var(--b-bg)}
+.tag.C{color:var(--c);background:var(--c-bg)}
+.tag.new{color:var(--new);background:var(--new-bg)}
+.tag.cont{color:var(--guess);background:var(--guess-bg)}
+dl{margin:0;display:grid;grid-template-columns:8.5em 1fr;gap:6px 12px}
+dt{color:var(--muted);font-weight:bold;font-size:.9rem;padding-top:2px}
+dd{margin:0}
+dd ul{margin:0;padding-left:1.2em}
+.guess{color:var(--guess);background:var(--guess-bg);font-size:.8rem;padding:0 6px;border-radius:4px;white-space:nowrap}
+a{color:var(--accent);word-break:break-all}
+.legend{color:var(--muted);font-size:.9rem;margin:8px 0 0}
+footer{color:var(--muted);font-size:.85rem;margin-top:40px}
+@media (max-width:600px){ dl{grid-template-columns:1fr} dt{padding-top:8px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>FX手法 検証候補リスト</h1>
+  <p class="date">実行日：2026-09-24（ジョージア時間）</p>
+</header>
+
+<h2>今週の検証おすすめ上位3件</h2>
+<p>A判定（そのまま検証できる）の候補は今回は無かった。</p>
+<div class="top3">
+  <div class="item">
+    <h3>1. 最初の30分足1本だけで決めるデイトレ（候補2）</h3>
+    <p>基準線、ブレイクの確認方法、入る位置、利確の比率まで書かれており、ルールが一番そろっている。基準の時刻（例：東京9時、ロンドン開始）と損切りの位置を決めれば、すぐMT5で組める。</p>
+  </div>
+  <div class="item">
+    <h3>2. ダウ理論＋移動平均線2本（候補1）</h3>
+    <p>今週いちばん多くのチャンネルが取り上げている組み合わせで、話題性ははっきりしている。トレンドの判定方法やEMAの期間を補う必要がある。検証の結果は記事にしたとき読まれやすい<span class="guess">推測</span>。</p>
+  </div>
+  <div class="item">
+    <h3>3. 早朝ゴールドの高値安値だけを使う手法（候補6）</h3>
+    <p>時間帯と高値安値だけで決まるので、補う点が少なく機械的に作りやすい。「抜けたら入る」と「跳ね返りで入る」の両方を試せば、それぞれの結果を比べられる。</p>
+  </div>
+</div>
+<p class="legend">補足：再生回数が一番多いのは候補4（YOSHI式、約9.3万回）。ただし概要欄に条件が無いため、上位からは外した。動画本編でルールを確認できれば、来週の有力候補になる<span class="guess">推測</span>。</p>
+
+<h2>今回の調べ方</h2>
+<div class="note">
+<ul>
+  <li>過去の結果：reports フォルダに過去の結果はなし（同じ日の1回目は接続制限で調査が不十分だったため、この版で置き換え）。全候補が「新規」。</li>
+  <li>YouTube：「FX 手法」「FX スキャルピング 手法」など13通りの言葉で、今月投稿の動画を検索。投稿日と再生回数（2026-09-24時点）を確認し、概要欄を読んだ。</li>
+  <li>note：ハッシュタグ「FX手法」「FX」「スキャルピング」など6つの新着から、2026-09-10以降の記事約1,500件を「スキ」の数で並べて確認。</li>
+  <li>ブログ村「FXオリジナル手法」：注目記事と新着記事を確認。上位の手法記事はバイナリーオプション向けが中心で、FXの手法として使えるものは見つからなかった。</li>
+  <li>注意：YouTube は概要欄までしか読めていない（動画本編は見ていない）。概要欄にルールが無いものは「記載なし」としている。</li>
+</ul>
+</div>
+
+<h2>候補一覧（10件）</h2>
+<p class="legend">検証できるか：<span class="tag A">A</span> そのままMT5で検証可　<span class="tag B">B</span> 一部補えば可　<span class="tag C">C</span> 裁量が大きく不可</p>
+
+<div class="cand">
+  <h3><span class="num">1.</span>ダウ理論＋移動平均線2本の押し目買い・戻り売り</h3>
+  <div class="tags"><span class="tag B">検証：B</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>ダウ理論でトレンドの向きを判断し、EMA（移動平均線の一種）でエントリー候補を絞る（ズバッ!トレーダーまりの動画の目次より）。細かい条件は記載なし</dd>
+    <dt>決済</dt><dd>目次に「損切り・利確・見送り」の章があるが、中身は記載なし</dd>
+    <dt>出典</dt><dd><ul>
+      <li>ズバッ! トレーダーまり（YouTube、2026-09-18）：<a href="https://www.youtube.com/watch?v=WqSwT5NrpfE">https://www.youtube.com/watch?v=WqSwT5NrpfE</a></li>
+      <li>FX College（YouTube、2026-09-15）：<a href="https://www.youtube.com/watch?v=YfrRUBD1U7s">https://www.youtube.com/watch?v=YfrRUBD1U7s</a></li>
+      <li>柴犬FX（YouTube、2026-09-21）：<a href="https://www.youtube.com/watch?v=jcCoQr51kKQ">https://www.youtube.com/watch?v=jcCoQr51kKQ</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>直近10日以内に、別々のチャンネルから同じ組み合わせの動画が3本出ている（再生回数は約1.2万回、約1.8万回、約0.8万回）。FX College と柴犬FXの動画はタイトルがほぼ同じ。noteでも2026-09-19に「たった2本の移動平均線」をうたう有料記事（2,999円）が出ている。</dd>
+    <dt>足りない点</dt><dd>トレンドの向きの決め方、EMAの期間、損切りと利確。移動平均線は使うが「クロスで売買」ではないので、検証済みの手法そのままではない。</dd>
+  </dl>
+</div>
+
+<div class="cand">
+  <h3><span class="num">2.</span>最初の30分足1本だけで決めるデイトレ（ワンキャンドル手法）</h3>
+  <div class="tags"><span class="tag B">検証：B</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>寄り付き後の最初の30分足の高値と安値に線を引き、5分足の終値がその線を抜けたらブレイクと判断する。抜けたあとに線まで戻ってきたところ（リテスト）で入る。ほかに「ブレイク」「反転」の入り方もあるとしている</dd>
+    <dt>決済</dt><dd>損失1に対して利益2（リスクリワード2：1）で設定</dd>
+    <dt>出典</dt><dd><ul>
+      <li>心眼のチャート研究所（YouTube、2026-09-18）：<a href="https://www.youtube.com/watch?v=m6CzXt48JGo">https://www.youtube.com/watch?v=m6CzXt48JGo</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>投稿から6日で約2.1万回再生。概要欄に「株、仮想通貨、FXなど市場を問わず使える」とある。ただし動画の実例はナスダック先物で、FXでの実例は確認していない。</dd>
+    <dt>足りない点</dt><dd>ルールは今回の候補の中で一番具体的。FXには「寄り付き」が無いので、東京9時やロンドン開始など、基準の時刻を決める必要がある。損切りの位置は記載なし。</dd>
+  </dl>
+</div>
+
+<div class="cand">
+  <h3><span class="num">3.</span>13MAまで引きつける戻り売り</h3>
+  <div class="tags"><span class="tag B">検証：B</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>①上位足で方向を確認、②チャンスを待つ、③13MA（13本の移動平均線）まで価格が戻るのを待って売る（動画の目次より）。細かい条件は記載なし</dd>
+    <dt>決済</dt><dd>目次に「利確する上でのポイント」の章があるが、中身は記載なし</dd>
+    <dt>出典</dt><dd><ul>
+      <li>ズバッ! トレーダーまり（YouTube、2026-09-04）：<a href="https://www.youtube.com/watch?v=fg-M5FV7DqM">https://www.youtube.com/watch?v=fg-M5FV7DqM</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>約1.5万回再生。タイトルに「朝の1回で約100万円」とある（本人の申告で、確認はしていない）。</dd>
+    <dt>足りない点</dt><dd>上位足の見方と決済のルール。これを補えば、13MAへの戻りは機械的に判定できる。</dd>
+  </dl>
+</div>
+
+<div class="cand">
+  <h3><span class="num">4.</span>YOSHI式スキャルピング（MACD×RCI）</h3>
+  <div class="tags"><span class="tag B">検証：B</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>目次に「MTF分析（複数の時間足を見る）」「MACD×RCI」「鉄板パターン」「オリジナル平均足」「3連MACD」の章がある。条件の中身は記載なし</dd>
+    <dt>決済</dt><dd>目次に「利食いと損切り」の章があるが、中身は記載なし</dd>
+    <dt>出典</dt><dd><ul>
+      <li>スキャトレふうた FX大学／JFX公式（YouTube、約2週間前）：<a href="https://www.youtube.com/watch?v=XiUvYgQYyKg">https://www.youtube.com/watch?v=XiUvYgQYyKg</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>今月のFX手法動画の中で再生回数が一番多い（約9.3万回）。タイトルは「62戦全勝を記録したインジケーター」「全ルールを公開」。FX会社（JFX）の口座開設キャンペーンと組み合わせた紹介動画である点に注意。</dd>
+    <dt>足りない点</dt><dd>使う指標は分かっているが、設定値と条件は動画本編を見ないと分からない。</dd>
+  </dl>
+</div>
+
+<div class="cand">
+  <h3><span class="num">5.</span>平均足に移動平均線やRSIを組み合わせる手法</h3>
+  <div class="tags"><span class="tag B">検証：B</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>平均足（ローソク足を平均化した足）の向きに、移動平均線とRSIの状態を合わせて判断する（FXトレーダーYUKIの概要欄より）。条件の中身は記載なし</dd>
+    <dt>決済</dt><dd>概要欄に「エントリー・損切り・利確まで同じルールで判断」とあるが、中身は記載なし</dd>
+    <dt>出典</dt><dd><ul>
+      <li>FXトレーダーYUKI（YouTube、2026-09-17）：<a href="https://www.youtube.com/watch?v=u55xrZx29_Q">https://www.youtube.com/watch?v=u55xrZx29_Q</a></li>
+      <li>マナブ（YouTube、2026-08-29）：<a href="https://www.youtube.com/watch?v=0nPmZUnyjZA">https://www.youtube.com/watch?v=0nPmZUnyjZA</a></li>
+      <li>花子のやさしいFX（YouTube、2026-09-14）：<a href="https://www.youtube.com/watch?v=c4QyvMVqbn4">https://www.youtube.com/watch?v=c4QyvMVqbn4</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>今月、平均足をテーマにした動画が複数出ている（YUKI 約0.7万回、マナブ 約2.4万回）。ただしマナブの動画は投稿から約4週間たっている。YUKIは設定値をLINE登録者限定にしている。</dd>
+    <dt>足りない点</dt><dd>平均足の色の変化は機械的に判定できるが、移動平均線とRSIの設定と条件を補う必要がある。</dd>
+  </dl>
+</div>
+
+<div class="cand">
+  <h3><span class="num">6.</span>早朝ゴールドの高値安値だけを使う手法（早朝ゴールド1本勝負）</h3>
+  <div class="tags"><span class="tag B">検証：B</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>早朝の決まった時間帯にできた高値と安値だけを使う。インジケーターは使わない（概要欄より）。高値安値を抜けたら入るのか、跳ね返りで入るのかは記載なし</dd>
+    <dt>決済</dt><dd>記載なし</dd>
+    <dt>出典</dt><dd><ul>
+      <li>FX手法検証ちゃんねる（YouTube、2026-09-06）：<a href="https://www.youtube.com/watch?v=zok3jqZT_vw">https://www.youtube.com/watch?v=zok3jqZT_vw</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>本編が約0.14万回、同じ内容の短い動画が約0.17万回再生。数字は小さいが、検証を専門にするチャンネルが取り上げている。</dd>
+    <dt>足りない点</dt><dd>時間帯、入り方（抜けるか、跳ね返るか）、決済。これを決めれば機械的に検証できる。</dd>
+  </dl>
+</div>
+
+<div class="cand">
+  <h3><span class="num">7.</span>東京時間の値動きからロンドン時間の反発を狙う</h3>
+  <div class="tags"><span class="tag B">検証：B</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>東京時間の値動きをもとに、ロンドン時間に反発しやすい場所を決めて入る（概要欄より）。場所の決め方は記載なし</dd>
+    <dt>決済</dt><dd>記載なし</dd>
+    <dt>出典</dt><dd><ul>
+      <li>クロユキFX（YouTube、2026-09-19）：<a href="https://www.youtube.com/watch?v=Ju8jtHpkMEo">https://www.youtube.com/watch?v=Ju8jtHpkMEo</a></li>
+      <li>タイチ（YouTube、2026-09-16、東京時間9時〜11時のスキャルピング）：<a href="https://www.youtube.com/watch?v=hq-XueFujhg">https://www.youtube.com/watch?v=hq-XueFujhg</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>クロユキの動画は約0.66万回再生。今月は時間帯を絞った手法の動画がほかにも出ている（タイチ 約0.2万回）。</dd>
+    <dt>足りない点</dt><dd>東京時間の高値と安値を使うのであれば機械的に決められる<span class="guess">推測</span>が、実際の決め方は動画本編の確認が必要。</dd>
+  </dl>
+</div>
+
+<div class="cand">
+  <h3><span class="num">8.</span>ぽんたさん式1分足スキャルピング（EAにしての検証）</h3>
+  <div class="tags"><span class="tag B">検証：B</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>記載なし</dd>
+    <dt>決済</dt><dd>記載なし（概要欄には「条件を1つ足すと損益がプラスになった」とだけある）</dd>
+    <dt>出典</dt><dd><ul>
+      <li>はかせのFX自動売買研究所（YouTube、2026-09-19）：<a href="https://www.youtube.com/watch?v=HxlfxCUMfeM">https://www.youtube.com/watch?v=HxlfxCUMfeM</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>投稿から5日で約0.19万回再生。ほかの人の手法を自動売買（EA）にして検証した動画。元の「ぽんたさん」の出典はWeb検索では見つからなかった。</dd>
+    <dt>足りない点</dt><dd>EAにできているので機械的なルールのはず<span class="guess">推測</span>。ただしルールは動画本編を見ないと分からない。</dd>
+  </dl>
+</div>
+
+<div class="cand">
+  <h3><span class="num">9.</span>スーパートレンドを使った手法</h3>
+  <div class="tags"><span class="tag B">検証：B</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>記載なし（概要欄は「平均足で有名な手法をスーパートレンドで扱いやすくした」という説明と、インジケーターの配布案内のみ）</dd>
+    <dt>決済</dt><dd>記載なし</dd>
+    <dt>出典</dt><dd><ul>
+      <li>チーム異国の戦士（YouTube、2026-09-05）：<a href="https://www.youtube.com/watch?v=RDMP5wtcfDU">https://www.youtube.com/watch?v=RDMP5wtcfDU</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>約0.7万回再生。タイトルに「海外で大人気」とあるが、それを裏づける数字は示されていない。</dd>
+    <dt>足りない点</dt><dd>売買条件。スーパートレンドはMT5で作れる指標なので、条件を決めれば検証しやすい<span class="guess">推測</span>。</dd>
+  </dl>
+</div>
+
+<div class="cand">
+  <h3><span class="num">10.</span>15分足値幅取り手法</h3>
+  <div class="tags"><span class="tag C">検証：C</span><span class="tag new">新規</span></div>
+  <dl>
+    <dt>エントリー</dt><dd>記載なし（個別指導でのみ教える形）</dd>
+    <dt>決済</dt><dd>記載なし</dd>
+    <dt>出典</dt><dd><ul>
+      <li>サム（note、2026-09-15）：<a href="https://note.com/file9521/n/n44aa89b3df2b">https://note.com/file9521/n/n44aa89b3df2b</a></li>
+      <li>サムFX（note、2026-09-17）：<a href="https://note.com/anb0186/n/n8f73e3ed0cb4">https://note.com/anb0186/n/n8f73e3ed0cb4</a></li>
+      <li>よー@FX（note、2026-09-14）：<a href="https://note.com/file4438/n/n3c156c4790dd">https://note.com/file4438/n/n3c156c4790dd</a></li>
+    </ul></dd>
+    <dt>話題の理由</dt><dd>直近10日で関連するnote記事が3本（スキ45、30、39）。ただし3本とも同じサイト（samu-fx.com）の個別指導の募集や感想で、別々の人が自然に話題にしているとは言えない。</dd>
+    <dt>足りない点</dt><dd>ルールが公開されていない。</dd>
+  </dl>
+</div>
+
+<footer>このページはFX手法の毎週の調査で作成。<span class="guess">推測</span>の印がある部分は、確認できた事実ではなく推測です。</footer>
+
+</div>
+</body>
+</html>
